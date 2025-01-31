@@ -38,13 +38,14 @@ public class BasicConfig {
                                 "/swagger-ui",
                                 "/newapi-ui/**",
                                 "/newapi-docs/**",
-                                "/swagger-ui/**")
+                                "/swagger-ui/**",
+                                "/status",
+                                "/teapot",
+                                "/update")
                         .permitAll()
-
-                        .requestMatchers(new AntPathRequestMatcher("/status"))
+                        .requestMatchers(new AntPathRequestMatcher("/update-system"))
                         .authenticated()
-                        .requestMatchers(new AntPathRequestMatcher("/teapot"))
-                        .anonymous())
+                )
                 .httpBasic(withDefaults())
                 .csrf().disable()
                 .build();

@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.exceptions.DamagedSystemEmptyException;
 import com.example.demo.model.SystemStatus;
 import com.example.demo.services.Service;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiRestController {
 
     @GetMapping("/status")
-    @SecurityRequirement(name = "basicAuth")
     @ResponseBody
     public SystemStatus getStatus() {
         if (Service.getDamagedSystem().isEmpty()) {

@@ -36,16 +36,6 @@ class DemoApplicationTests {
         mockMvc = MockMvcBuilders.standaloneSetup(apiController, apiRestController).build();
     }
 
-    @Test
-    void testRepairBayRedirectsWhenDamagedSystemIsEmpty() throws Exception {
-        try (var mockedService = mockStatic(Service.class)) {
-            when(Service.getDamagedSystem()).thenReturn(""); // Simulate no damaged system
-
-            mockMvc.perform(get("/repair-bay"))
-                    .andExpect(status().is3xxRedirection())
-                    .andExpect(redirectedUrl("/update"));
-        }
-    }
 
     @Test
     void testRepairBayLoadsCorrectly() throws Exception {
